@@ -1,0 +1,39 @@
+PROBLEM2
+
+- Stampare l'albero generato per trovare la soluzione del problema.
+Per stampare l'albero è stato creato inizialmente il problema CSP 
+(file Assignment3.py) aggiungendo le variabili con i corrispettivi domini
+e i vincoli.
+Una volta creato il CSP è stata riutilizzata la classe Search_from_CSP del
+file cspSearch.py per effettuare una espansione del problema che permette di stampare
+sul terminale tutto l'albero espanso e le soluzioni.
+In particolare è stata utilizzata la classe Searcher1 del file searchGeneric.py 
+che permette di effettuare una classica espansione della frontiera e, tramite 
+l'implementazione di una frontiera negativa, permette di avere anche i cammini
+non consistenti nella stampa dell'albero
+
+-Mostrare il grafo del problema
+Tramite la funzione show() già presente nella classe CSP del file cspProblem.py
+si può visualizzare il grafico del problema con le variabili collegate tra loro
+dai vincoli
+
+-Mostrare quali elementi del dominio vengono eliminati ad ogni step e quali archi
+sono responsabili della rimozione dell'elemento
+Per risolvere questo punto è stata utilizzata la classe Search_with_AC_from_CSP
+del file cspConsistency.py che permette di analizzare il problema tramite 
+l'Arc Consistency. Utilizzando il metodo make_arc_consistent() si ottiene la 
+stampa step-by-step dell'evoluzione del dominio per ogni variabile e vincolo 
+considerati (con le relative eliminazioni dei valori)
+
+-Mostrare esplicitamente la soluzione ottenuta alla fine dell'Arc Consistency
+La funzione richiamata nel punto precedente già permette di avere il dominio del 
+problema alla fine dell'Arc Consistency.
+
+-Mostrare come la divisione del dominio può essere usata per risolvere il problema
+Questo punto è stato risolto creando un oggetto della classe Con_Solver del 
+file cspConsistency che effettua la creazione del problema come il punto precedente 
+utilizzando la funzione make_arc_consistent. Una volta ottenuto il problema viene
+richiamata la funzione solve.one() e le viene passato anche il dominio ottenuto 
+nel punto precedente così che la divisione del dominio venga effettuata dopo
+l'Arc Consistency. Per impedire al metodo di ritornare una singola soluzione è stato
+rimosso il return della singola soluzione (quindi il metodo ritorna più soluzioni)
